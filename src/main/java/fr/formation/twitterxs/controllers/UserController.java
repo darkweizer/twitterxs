@@ -29,4 +29,9 @@ public class UserController {
     protected void create(@Valid @RequestBody UserCreateDto dto){
         userService.create(dto);
     }
+
+    @DeleteMapping("/delete/{id}")
+    protected void delete(@PathVariable("id") Long id){
+        userService.delete(id);
+    }
 }

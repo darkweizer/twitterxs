@@ -43,4 +43,9 @@ public class UserServiceImpl implements UserService {
 
         userJpa.save(user);
     }
+
+    @Override
+    public void delete(Long id) {
+        userJpa.deleteById(id);
+    }
 }

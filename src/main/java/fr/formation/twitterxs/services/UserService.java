@@ -11,4 +11,6 @@ public interface UserService {
     List<UserDto> allUsersByLastname(String firstname);
 
     void create(UserCreateDto dto);
+
+    void delete(Long id);
 }
