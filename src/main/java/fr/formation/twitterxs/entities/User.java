@@ -11,7 +11,8 @@ import java.time.LocalDateTime;
 
 @Data
 @Entity
-public class Users {
+@Table(name = "users")
+public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

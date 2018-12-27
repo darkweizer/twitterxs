@@ -1,7 +1,7 @@
 package fr.formation.twitterxs.controllers;
 
 import fr.formation.twitterxs.dto.UserCreateDto;
-import fr.formation.twitterxs.entities.Users;
+import fr.formation.twitterxs.dto.UserDto;
 import fr.formation.twitterxs.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -20,8 +20,8 @@ public class UserController {
         this.userService = userService;
     }
 
-    @GetMapping("/{lastname}")
-    protected List<Users> allUsersByLastname(@PathVariable("firstname") String firstname){
+    @GetMapping("/{firstname}")
+    protected List<UserDto> allUsersByLastname(@PathVariable("firstname") String firstname){
         return userService.allUsersByLastname(firstname);
     }
 

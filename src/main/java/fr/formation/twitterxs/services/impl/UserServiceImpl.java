@@ -1,8 +1,9 @@
 package fr.formation.twitterxs.services.impl;
 
 import fr.formation.twitterxs.dto.UserCreateDto;
+import fr.formation.twitterxs.dto.UserDto;
 import fr.formation.twitterxs.entities.Region;
-import fr.formation.twitterxs.entities.Users;
+import fr.formation.twitterxs.entities.User;
 import fr.formation.twitterxs.jparepository.RegionJpaRepository;
 import fr.formation.twitterxs.jparepository.UserJpaRepository;
 import fr.formation.twitterxs.services.UserService;
@@ -11,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -28,13 +30,13 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public List<Users> allUsersByLastname(String firstname) {
-        return userJpa.findAllByFirstnameContains(firstname);
+    public List<UserDto> allUsersByLastname(String firstname) {
+        return userJpa.findAllDto(firstname);
     }
 
     @Override
     public void create(UserCreateDto dto) {
-        Users user =  mapper.map(dto, Users.class);
+        User user =  mapper.map(dto, User.class);
         Region region = regionJpa.getOne(dto.getRegionId());
         user.setRegion(region);
         user.setSubscriptionDate(LocalDateTime.now());
