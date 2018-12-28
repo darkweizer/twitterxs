@@ -6,17 +6,15 @@ import fr.formation.twitterxs.entities.Region;
 import fr.formation.twitterxs.entities.User;
 import fr.formation.twitterxs.jparepository.RegionJpaRepository;
 import fr.formation.twitterxs.jparepository.UserJpaRepository;
-import fr.formation.twitterxs.services.UserService;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
-import java.util.ArrayList;
 import java.util.List;
 
 @Service
-public class UserServiceImpl implements UserService {
+public class UserServiceImpl implements fr.formation.twitterxs.services.UserService {
 
     @Autowired
     private ModelMapper mapper;
@@ -47,5 +45,10 @@ public class UserServiceImpl implements UserService {
     @Override
     public void delete(Long id) {
         userJpa.deleteById(id);
+    }
+
+    @Override
+    public boolean isEmailExist(String email) {
+        return userJpa.existsByEmailIgnoreCase(email);
     }
 }

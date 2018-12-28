@@ -3,7 +3,9 @@ package fr.formation.twitterxs;
 import org.modelmapper.ModelMapper;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Bean;
+import org.springframework.validation.beanvalidation.LocalValidatorFactoryBean;
 
 @SpringBootApplication
 public class TwitterxsApplication {
@@ -15,6 +17,13 @@ public class TwitterxsApplication {
     @Bean
     public ModelMapper mapper(){
         return  new ModelMapper();
+    }
+
+    @Bean
+    protected LocalValidatorFactoryBean validator(MessageSource messageSource) {
+        LocalValidatorFactoryBean validatorFactoryBean = new LocalValidatorFactoryBean();
+        validatorFactoryBean.setValidationMessageSource(messageSource);
+        return validatorFactoryBean;
     }
 
 }

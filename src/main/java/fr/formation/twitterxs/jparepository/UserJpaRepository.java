@@ -12,4 +12,6 @@ public interface UserJpaRepository extends JpaRepository<User, Long> {
 
     @Query("select new fr.formation.twitterxs.dto.UserDto(u.id, u.firstname, u.lastname, r.country) from User u join u.region r where u.firstname like %:firstname%")
     List<UserDto> findAllDto(@Param("firstname") String firstname);
+
+    Boolean existsByEmailIgnoreCase(String email);
 }
