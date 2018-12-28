@@ -4,6 +4,7 @@ import fr.formation.twitterxs.errors.Adult;
 import fr.formation.twitterxs.errors.UniqueEmail;
 import lombok.Data;
 
+import javax.validation.Valid;
 import javax.validation.constraints.*;
 import java.time.LocalDate;
 
@@ -28,5 +29,10 @@ public class UserCreateDto {
     @NotNull(message = "{E_NOT_NULL}")
     private LocalDate birthDate;
 
+    @NotNull(message = "{E_NOT_NULL}")
     private Long regionId;
+
+    @Valid
+    @NotNull(message = "{E_NOT_NULL}")
+    private UserSecurityCreateDto security;
 }

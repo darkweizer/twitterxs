@@ -1,11 +1,12 @@
 package fr.formation.twitterxs.entities;
 
+import fr.formation.twitterxs.dto.UserSecurityCreateDto;
 import lombok.AccessLevel;
 import lombok.Data;
-import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
+import javax.validation.Valid;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
@@ -37,4 +38,7 @@ public class User {
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(nullable = false)
     private Region region;
+
+    @Embedded
+    private UserSecurity security;
 }
