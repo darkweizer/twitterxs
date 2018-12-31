@@ -9,7 +9,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/regions")
-public class RegionController {
+public class RegionController extends BaseController {
 
     @Autowired
     private RegionService regionService;
