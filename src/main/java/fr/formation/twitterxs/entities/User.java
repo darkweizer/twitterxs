@@ -9,6 +9,7 @@ import javax.persistence.*;
 import javax.validation.Valid;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.Set;
 
 @Data
 @Entity
@@ -41,4 +42,7 @@ public class User {
 
     @Embedded
     private UserSecurity security;
+
+    @OneToMany(mappedBy = "author", fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
+    private Set<Tweet> tweets;
 }

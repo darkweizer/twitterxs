@@ -14,7 +14,7 @@ public class TestController {
 //    @Autowired
     private TestService service;
 
-    @Autowired
+    // @Autowired is optional with one constructor
     public TestController(TestService service) {
         this.service = service;
     }
