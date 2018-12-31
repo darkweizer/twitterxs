@@ -1,12 +1,10 @@
 package fr.formation.twitterxs.entities;
 
-import fr.formation.twitterxs.dto.UserSecurityCreateDto;
 import lombok.AccessLevel;
 import lombok.Data;
 import lombok.Setter;
 
 import javax.persistence.*;
-import javax.validation.Valid;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.Set;
