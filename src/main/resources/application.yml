@@ -21,3 +21,7 @@ spring:
       hibernate.format_sql: true
   jackson:
     date-format: yyyy-MM-dd HH:mm:ss.SSS
+  mvc:
+    view:
+      prefix: /WEB-INF/jsp/
+      suffix: .jsp
