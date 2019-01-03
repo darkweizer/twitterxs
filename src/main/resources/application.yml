@@ -4,7 +4,7 @@ server:
       context-path: /twitterxs
   error:
     whitelabel: 
-      enabled: false
+      enabled: false #true pour les jsp, false pour les ws (permet d'afficher des erreurs)
 
 spring:
   datasource:

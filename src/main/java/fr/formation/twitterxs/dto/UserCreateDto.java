@@ -3,6 +3,7 @@ package fr.formation.twitterxs.dto;
 import fr.formation.twitterxs.errors.Adult;
 import fr.formation.twitterxs.errors.UniqueEmail;
 import lombok.Data;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.validation.Valid;
 import javax.validation.constraints.*;
@@ -25,6 +26,7 @@ public class UserCreateDto {
     @UniqueEmail
     private String email;
 
+    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
     @Adult
     @NotNull(message = "{E_NOT_NULL}")
     private LocalDate birthDate;
