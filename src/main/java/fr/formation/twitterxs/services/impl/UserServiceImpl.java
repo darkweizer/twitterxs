@@ -8,6 +8,7 @@ import fr.formation.twitterxs.jparepository.RegionJpaRepository;
 import fr.formation.twitterxs.jparepository.UserJpaRepository;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
@@ -19,10 +20,13 @@ public class UserServiceImpl implements fr.formation.twitterxs.services.UserServ
     @Autowired
     private ModelMapper mapper;
 
+    private final PasswordEncoder encoder;
+
     private final UserJpaRepository userJpa;
     private final RegionJpaRepository regionJpa;
 
-    protected UserServiceImpl(UserJpaRepository userJpa, RegionJpaRepository regionJpa) {
+    protected UserServiceImpl(PasswordEncoder encoder, UserJpaRepository userJpa, RegionJpaRepository regionJpa) {
+        this.encoder = encoder;
         this.userJpa = userJpa;
         this.regionJpa = regionJpa;
     }
@@ -38,6 +42,10 @@ public class UserServiceImpl implements fr.formation.twitterxs.services.UserServ
         Region region = regionJpa.getOne(dto.getRegionId());
         user.setRegion(region);
         user.setSubscriptionDate(LocalDateTime.now());
+
+        String pwd = user.getSecurity().getPassword();
+        String encoded = encoder.encode(pwd);
+        user.getSecurity().setPassword(encoded);
 
         userJpa.save(user);
     }

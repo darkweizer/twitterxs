@@ -5,6 +5,7 @@ import fr.formation.twitterxs.entities.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
+import org.springframework.lang.Nullable;
 
 import java.util.List;
 
@@ -14,4 +15,7 @@ public interface UserJpaRepository extends JpaRepository<User, Long> {
     List<UserDto> findAllDto(@Param("firstname") String firstname);
 
     Boolean existsByEmailIgnoreCase(String email);
+
+    @Nullable // Indicates that return can be null
+    User findBySecurityUsername(String username);
 }

@@ -43,4 +43,33 @@ public class User {
 
     @OneToMany(mappedBy = "author", fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
     private Set<Tweet> tweets;
+
+
+    public enum Role{
+        ROLE_USER("USER"),
+        ROLE_ADMIN("ADMIN"),
+        ROLE_ACTUATOR("ACTUATOR");
+
+        private final String notPrefixed;
+
+        Role(String notPrefixed) {
+            this.notPrefixed = notPrefixed;
+        }
+
+        public static Role getDefault(){
+            return ROLE_USER;
+        }
+
+        public boolean isUser() {
+            return equals(ROLE_USER);
+        }
+
+        public boolean isAdmin() {
+            return equals(ROLE_ADMIN);
+        }
+
+        public boolean isActuator() {
+            return equals(ROLE_ACTUATOR);
+        }
+    }
 }

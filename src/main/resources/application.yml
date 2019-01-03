@@ -7,6 +7,8 @@ server:
       enabled: false #true pour les jsp, false pour les ws (permet d'afficher des erreurs)
 
 spring:
+  profiles:
+    active: dev
   datasource:
     url: jdbc:mysql://localhost:3306/twitterxs?createDatabaseIfNotExist=true&useSSL=false&useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=CET
     username: root
