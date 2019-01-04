@@ -12,7 +12,7 @@ import javax.validation.constraints.Size;
 @Data
 @IsUserPassword
 @NotSamePassword
-public class ChangePasswordDto {
+public class UpdatePasswordDto {
 
     @NotBlank(message = "{E_NOT_BLANK}")
     @Size(max = 50, message = "{E_MAX_LENGTH_EXCEEDED}")

@@ -28,9 +28,7 @@ public class AdminController extends BaseController{
 
     @GetMapping("/stats")
     protected ResponseEntity<StatsDto> stats(){
-        ResponseEntity<StatsDto> stats = adminService.findStatsNbUsersAndNbTweets();
-
-        return stats;
+        return adminService.findStatsNbUsersAndNbTweets();
     }
 
     /*@GetMapping("/stats/{username}")

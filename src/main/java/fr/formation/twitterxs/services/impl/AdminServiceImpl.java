@@ -23,8 +23,7 @@ public class AdminServiceImpl implements AdminService {
     public ResponseEntity<StatsDto> findStatsNbUsersAndNbTweets() {
 
         StatsDto statsDto = new StatsDto(jpaUser.count(), jpaTweet.count());
-        ResponseEntity<StatsDto> stats = new ResponseEntity<StatsDto>(statsDto, HttpStatus.OK);
 
-        return stats;
+        return new ResponseEntity<StatsDto>(statsDto, HttpStatus.OK);
     }
 }

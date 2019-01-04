@@ -1,6 +1,6 @@
 package fr.formation.twitterxs.services;
 
-import fr.formation.twitterxs.dto.ChangePasswordDto;
+import fr.formation.twitterxs.dto.UpdatePasswordDto;
 import fr.formation.twitterxs.dto.UserCreateDto;
 import fr.formation.twitterxs.dto.UserDto;
 
@@ -16,7 +16,7 @@ public interface UserService {
 
     boolean isEmailExist(String email);
 
-    void changePassword(ChangePasswordDto dto);
+    void changePassword(UpdatePasswordDto dto);
 
     boolean isUsernameExsit(String value);
 

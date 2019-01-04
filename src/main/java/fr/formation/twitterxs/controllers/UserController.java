@@ -1,6 +1,6 @@
 package fr.formation.twitterxs.controllers;
 
-import fr.formation.twitterxs.dto.ChangePasswordDto;
+import fr.formation.twitterxs.dto.UpdatePasswordDto;
 import fr.formation.twitterxs.dto.UserCreateDto;
 import fr.formation.twitterxs.dto.UserDto;
 import fr.formation.twitterxs.security.AnyRole;
@@ -37,9 +37,9 @@ public class UserController extends BaseController {
         userService.delete(id);
     }
 
-    @PostMapping("/change/password")
+    @PostMapping("/update/password")
     @AnyRole
-    protected void changePassword(@Valid @RequestBody ChangePasswordDto dto){
+    protected void changePassword(@Valid @RequestBody UpdatePasswordDto dto){
         userService.changePassword(dto);
     }
 }

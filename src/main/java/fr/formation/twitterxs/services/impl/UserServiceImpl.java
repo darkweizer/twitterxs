@@ -1,6 +1,6 @@
 package fr.formation.twitterxs.services.impl;
 
-import fr.formation.twitterxs.dto.ChangePasswordDto;
+import fr.formation.twitterxs.dto.UpdatePasswordDto;
 import fr.formation.twitterxs.dto.UserCreateDto;
 import fr.formation.twitterxs.dto.UserDto;
 import fr.formation.twitterxs.entities.Region;
@@ -62,7 +62,7 @@ public class UserServiceImpl implements fr.formation.twitterxs.services.UserServ
     }
 
     @Override
-    public void changePassword(ChangePasswordDto dto) {
+    public void changePassword(UpdatePasswordDto dto) {
         User user = userJpa.findBySecurityUsername(dto.getUsername());
         user.getSecurity().setPassword(encoder.encode(dto.getNewPassword()));
         userJpa.save(user);
