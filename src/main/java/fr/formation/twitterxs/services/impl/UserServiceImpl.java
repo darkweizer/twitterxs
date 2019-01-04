@@ -1,5 +1,6 @@
 package fr.formation.twitterxs.services.impl;
 
+import fr.formation.twitterxs.dto.ChangePasswordDto;
 import fr.formation.twitterxs.dto.UserCreateDto;
 import fr.formation.twitterxs.dto.UserDto;
 import fr.formation.twitterxs.entities.Region;
@@ -58,5 +59,22 @@ public class UserServiceImpl implements fr.formation.twitterxs.services.UserServ
     @Override
     public boolean isEmailExist(String email) {
         return userJpa.existsByEmailIgnoreCase(email);
+    }
+
+    @Override
+    public void changePassword(ChangePasswordDto dto) {
+        User user = userJpa.findBySecurityUsername(dto.getUsername());
+        user.getSecurity().setPassword(encoder.encode(dto.getNewPassword()));
+        userJpa.save(user);
+    }
+
+    @Override
+    public boolean isUsernameExsit(String username) {
+        return userJpa.existsBySecurityUsernameIgnoreCase(username);
+    }
+
+    @Override
+    public boolean isUserPassword(String username, String password) {
+        return encoder.matches(password, userJpa.findBySecurityUsername(username).getSecurity().getPassword());
     }
 }

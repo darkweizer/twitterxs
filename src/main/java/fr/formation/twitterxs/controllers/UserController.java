@@ -1,7 +1,9 @@
 package fr.formation.twitterxs.controllers;
 
+import fr.formation.twitterxs.dto.ChangePasswordDto;
 import fr.formation.twitterxs.dto.UserCreateDto;
 import fr.formation.twitterxs.dto.UserDto;
+import fr.formation.twitterxs.security.AnyRole;
 import fr.formation.twitterxs.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -33,5 +35,11 @@ public class UserController extends BaseController {
     @DeleteMapping("/delete/{id}")
     protected void delete(@PathVariable("id") Long id){
         userService.delete(id);
+    }
+
+    @PostMapping("/change/password")
+    @AnyRole
+    protected void changePassword(@Valid @RequestBody ChangePasswordDto dto){
+        userService.changePassword(dto);
     }
 }

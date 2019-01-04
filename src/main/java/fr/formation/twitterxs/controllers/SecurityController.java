@@ -26,6 +26,7 @@ public class SecurityController extends BaseController {
      * @return the principal; never {@code null}
      */
     @GetMapping("/me")
+    @AnyRole
     protected Principal me() {
         return getPrincipal();
     }

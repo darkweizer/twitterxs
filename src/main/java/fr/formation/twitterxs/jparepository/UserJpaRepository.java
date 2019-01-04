@@ -18,4 +18,6 @@ public interface UserJpaRepository extends JpaRepository<User, Long> {
 
     @Nullable // Indicates that return can be null
     User findBySecurityUsername(String username);
+
+    boolean existsBySecurityUsernameIgnoreCase(String username);
 }
